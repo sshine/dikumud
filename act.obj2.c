@@ -29,7 +29,7 @@ extern int drink_aff[][3];
 
 struct obj_data *get_object_in_equip_vis(struct char_data *ch,
                          char *arg, struct obj_data **equipment, int *j);
-char *strdup(char *source);
+char *our_strdup(char *source);
 
 
 
@@ -64,7 +64,7 @@ void name_from_drinkcon(struct obj_data *obj)
 	for(i=0; (*((obj->name)+i)!=' ') && (*((obj->name)+i)!='\0'); i++)  ;
 
 	if (*((obj->name)+i)==' ') {
-		new_name=strdup((obj->name)+i+1);
+		new_name=our_strdup((obj->name)+i+1);
 		free(obj->name);
 		obj->name=new_name;
 	}

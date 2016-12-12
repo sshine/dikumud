@@ -1156,7 +1156,7 @@ struct obj_data *create_money( int amount )
 	struct extra_descr_data *new_descr;
 	char buf[80];
 
-	char *strdup(char *str);
+	char *our_strdup(char *str);
 
 	if(amount<=0)
 	{
@@ -1170,38 +1170,38 @@ struct obj_data *create_money( int amount )
 
 	if(amount==1)
 	{
-		obj->name = strdup("coin gold");
-		obj->short_description = strdup("a gold coin");
-		obj->description = strdup("One miserable gold coin.");
+		obj->name = our_strdup("coin gold");
+		obj->short_description = our_strdup("a gold coin");
+		obj->description = our_strdup("One miserable gold coin.");
 
-		new_descr->keyword = strdup("coin gold");
-		new_descr->description = strdup("One miserable gold coin.");
+		new_descr->keyword = our_strdup("coin gold");
+		new_descr->description = our_strdup("One miserable gold coin.");
 	}
 	else
 	{
-		obj->name = strdup("coins gold");
-		obj->short_description = strdup("gold coins");
-		obj->description = strdup("A pile of gold coins.");
+		obj->name = our_strdup("coins gold");
+		obj->short_description = our_strdup("gold coins");
+		obj->description = our_strdup("A pile of gold coins.");
 
-		new_descr->keyword = strdup("coins gold");
+		new_descr->keyword = our_strdup("coins gold");
 		if(amount<10) {
 			sprintf(buf,"There is %d coins.",amount);
-			new_descr->description = strdup(buf);
+			new_descr->description = our_strdup(buf);
 		} 
 		else if (amount<100) {
 			sprintf(buf,"There is about %d coins",10*(amount/10));
-			new_descr->description = strdup(buf);
+			new_descr->description = our_strdup(buf);
 		}
 		else if (amount<1000) {
 			sprintf(buf,"It looks like something round %d coins",100*(amount/100));
-			new_descr->description = strdup(buf);
+			new_descr->description = our_strdup(buf);
 		}
 		else if (amount<100000) {
 			sprintf(buf,"You guess there is %d coins",1000*((amount/1000)+ number(0,(amount/1000))));
-			new_descr->description = strdup(buf);
+			new_descr->description = our_strdup(buf);
 		}
 		else 
-			new_descr->description = strdup("There is A LOT of coins");			
+			new_descr->description = our_strdup("There is A LOT of coins");
 	}
 
 	new_descr->next = 0;
