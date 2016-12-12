@@ -1,3 +1,6 @@
+# DikuMUD-specific
+dmserver
+
 # Prerequisites
 *.d
 
