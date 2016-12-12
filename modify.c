@@ -729,7 +729,7 @@ char *nogames(void)
 	if (fl = fopen("lib/nogames", "r"))
 	{
 		log_message("/usr/games/nogames exists");
-		fgets(text, fl);
+		fgets(text, 200, fl);
 		return(text);
 		fclose(fl);
 	}
