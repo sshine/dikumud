@@ -9,6 +9,9 @@
 
 #include <errno.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <time.h>
 #include <ctype.h>
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -246,7 +249,7 @@ int game_loop(int s)
 
 	opt_time.tv_usec = OPT_USEC;  /* Init time values */
 	opt_time.tv_sec = 0;
-	gettimeofday(&last_time, (struct timeval *) 0);
+	gettimeofday(&last_time, NULL);
 
 	maxdesc = s;
 	avail_descs = getdtablesize() - 2; /* !! Change if more needed !! */
@@ -272,7 +275,7 @@ int game_loop(int s)
 		}
 
 		/* check out the time */
-		gettimeofday(&now, (struct timeval *) 0);
+		gettimeofday(&now, NULL);
 		timespent = timediff(&now, &last_time);
 		timeout = timediff(&opt_time, &timespent);
 		last_time.tv_sec = now.tv_sec + timeout.tv_sec;
@@ -575,7 +578,7 @@ int init_socket(int port)
 		perror("setsockopt LINGER");
 		exit(1);
 	}
-	if (bind(s, &sa, sizeof(sa), 0) < 0)
+	if (bind(s, &sa, sizeof(sa)) < 0)
 	{
 		perror("bind");
 		close(s);
