@@ -8,6 +8,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdio.h>
+#include <unistd.h>
 #include "structs.h"
 #include "comm.h"
 #include "interpreter.h"
