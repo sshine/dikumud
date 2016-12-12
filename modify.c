@@ -738,9 +738,7 @@ char *nogames(void)
 }
 
 
-#ifdef OLD_COMA
-
-void coma(void)
+void coma_0(void)
 {
 	extern struct descriptor_data *descriptor_list;
 	extern int tics;
@@ -767,8 +765,6 @@ void coma(void)
 	log_message("Leaving coma");
 }
 
-#endif
-
 
 
 /* emulate the game regulator */
@@ -788,7 +784,7 @@ void gr(int s)
 
 	void send_to_all(char *messg);
 
-	void coma(int s);
+	void coma_1(int s);
 
 	if (((ld = load()) >= 6) || (txt = nogames()) || slow_death)
 	{
@@ -813,7 +809,7 @@ void gr(int s)
 		else
 			if (ld >= 6)
 			{
-				coma(s);
+				coma_1(s);
 				wnr = 0;
 			}
 			else
