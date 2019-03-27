@@ -39,8 +39,10 @@ int dice(int number, int size)
 {
   int r;
   int sum = 0;
-
-	assert(size >= 1);
+ //this is a temporary workaround, the problem is in the calling of this function at line 1001 of dc.c file.
+ //bug generated  at line 943 of read_mobile(...) function, tmp2 it's always less than zero.
+  if(size <= 0) { size = 1; log_message("Dice size value is invalid."); }
+	//assert(size >= 1);
 
   for (r = 1; r <= number; r++) sum += ((random() % size)+1);
   return(sum);
